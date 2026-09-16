@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMC PRECISION | Aerospace & Industrial Linear Drive Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mhd-red: #d3202a;
+      --mhd-red-glow: rgba(211, 32, 42, 0.45);
+      --mhd-red-dark: #b0141d;
+      --mhd-navy: #0e1726;
+      --mhd-navy-deep: #080d17;
+      --mhd-slate-dark: #1b2434;
+      --mhd-light-bg: #f4f6f9;
+      --mhd-card-bg: #ffffff;
+      --mhd-border: #dbe2ea;
+      --mhd-border-dark: #2c384d;
+      --mhd-text-main: #111827;
+      --mhd-text-muted: #64748b;
+      --mhd-silver: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--mhd-light-bg);
+      color: var(--mhd-text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TOP EXPANDED BRAND BANNER */
+    header {
+      background: #ffffff;
+      border-bottom: 4px solid var(--mhd-red);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.9rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-frame {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-frame:hover {
+      transform: translateY(-1px);
+    }
+
+    .logo-frame svg {
+      height: 100%;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.04));
+    }
+
+    .header-right-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background: #eef2f6;
+      border: 1px solid var(--mhd-border);
+      border-radius: 2px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 18px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--mhd-navy);
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+
+    .nav-btn:hover {
+      background: #e2e8f0;
+      color: var(--mhd-red);
+    }
+
+    .nav-btn.active {
+      background: var(--mhd-navy);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(14, 23, 38, 0.2);
+    }
+
+    .header-compliance-panel {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--mhd-text-muted);
+      text-transform: uppercase;
+    }
+
+    .header-compliance-panel span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-compliance-panel span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--mhd-red);
+      display: inline-block;
+      animation: pulseIndicator 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseIndicator {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Sub-header Hero Banner */
+    .hero-strip {
+      background: linear-gradient(90deg, var(--mhd-navy-deep) 0%, var(--mhd-slate-dark) 100%);
+      color: #fff;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--mhd-border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-strip::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 30%;
+      background: linear-gradient(90deg, transparent, rgba(211, 32, 42, 0.08));
+      pointer-events: none;
+    }
+
+    .hero-strip h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-strip p {
+      color: #94a3b8;
+      font-size: 0.8rem;
+      margin-top: 3px;
+      letter-spacing: 0.3px;
+    }
+
+    .defense-tag {
+      background: rgba(211, 32, 42, 0.18);
+      border: 1px solid var(--mhd-red);
+      color: #ff858d;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(211, 32, 42, 0.2);
+    }
+
+    /* Single-Page Content Stack */
+    .main-page-container {
+      max-width: 1700px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2.5rem 3rem 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Section Headings */
+    .section-headline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-headline h2 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--mhd-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .section-headline h2::before {
+      content: "";
+      width: 6px;
+      height: 24px;
+      background: var(--mhd-red);
+      display: inline-block;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--mhd-border);
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--mhd-text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* CONFIGURATOR SECTION: Dual Column */
+    .config-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1180px) {
+      .config-grid {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: flex-start;
+      }
+      .header-right-block {
+        align-items: flex-start;
+      }
+    }
+
+    /* Card Panels */
+    .mhd-card {
+      background: var(--mhd-card-bg);
+      border: 1px solid var(--mhd-border);
+      border-radius: 2px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .mhd-card:hover {
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .sticky-card {
+      position: sticky;
+      top: 7.5rem;
+    }
+
+    .panel-header {
+      border-bottom: 2px solid var(--mhd-silver);
+      padding-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-header h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--mhd-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Form Controls */
+    .config-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .config-field label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--mhd-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .config-field label span.val-highlight {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--mhd-red);
+      font-weight: 700;
+    }
+
+    .toggle-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      background: #eef2f6;
+      border: 1px solid #d1d5db;
+      padding: 3px;
+      border-radius: 2px;
+      gap: 4px;
+    }
+
+    .toggle-group button {
+      background: transparent;
+      border: none;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--mhd-slate-dark);
+      cursor: pointer;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toggle-group button:hover {
+      background: rgba(14, 23, 38, 0.08);
+    }
+
+    .toggle-group button.active {
+      background: var(--mhd-navy);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(14, 23, 38, 0.25);
+    }
+
+    .custom-select, .custom-input, .custom-textarea {
+      background: #ffffff;
+      border: 1.5px solid var(--mhd-border);
+      border-radius: 2px;
+      padding: 0.7rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--mhd-navy);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .custom-select:focus, .custom-input:focus, .custom-textarea:focus {
+      border-color: var(--mhd-red);
+      box-shadow: 0 0 0 3px rgba(211, 32, 42, 0.15);
+    }
+
+    .custom-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--mhd-red);
+      height: 5px;
+      background: #e2e8f0;
+      border-radius: 0;
+      outline: none;
+      cursor: ew-resize;
+    }
+
+    /* Simulation Box & Animations */
+    .aero-stage-box {
+      background: var(--mhd-navy-deep);
+      border: 1px solid var(--mhd-border-dark);
+      border-radius: 2px;
+      position: relative;
+      padding: 1rem;
+      overflow: hidden;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .stage-hud {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+    }
+
+    .stage-hud strong {
+      color: var(--mhd-red);
+    }
+
+    /* Animated Flux Pulse Across Gap */
+    .flux-arc-animated {
+      animation: fluxCycle 1.6s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    @keyframes fluxCycle {
+      0%, 100% { opacity: 0.25; stroke: #475569; }
+      50% { opacity: 1; stroke: #d3202a; filter: drop-shadow(0 0 3px #d3202a); }
+    }
+
+    /* Part Banner */
+    .part-banner {
+      background: var(--mhd-navy);
+      border-left: 5px solid var(--mhd-red);
+      border-radius: 2px;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .part-label {
+      font-size: 0.65rem;
+      color: #94a3b8;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .part-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    /* Telemetry Grid */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .data-cell {
+      background: #f8fafc;
+      border: 1px solid var(--mhd-border);
+      border-top: 3px solid var(--mhd-slate-dark);
+      padding: 0.85rem;
+      border-radius: 2px;
+      transition: transform 0.15s ease;
+    }
+
+    .data-cell:hover {
+      transform: translateY(-2px);
+    }
+
+    .data-cell.highlight {
+      border-top-color: var(--mhd-red);
+    }
+
+    .data-metric {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--mhd-text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .data-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--mhd-navy);
+      margin-top: 2px;
+      display: block;
+    }
+
+    .data-value span {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Pricing & Commercial */
+    .commercial-box {
+      background: #f1f5f9;
+      border: 1px solid var(--mhd-border);
+      border-radius: 2px;
+      padding: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-num {
+      font-size: 1.85rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--mhd-navy);
+    }
+
+    .lead-status {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--mhd-red);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.2rem;
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-red {
+      background: var(--mhd-red);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(211, 32, 42, 0.25);
+    }
+
+    .btn-red:hover {
+      background: var(--mhd-red-dark);
+      box-shadow: 0 6px 18px rgba(211, 32, 42, 0.4);
+    }
+
+    .btn-navy {
+      background: transparent;
+      border: 2px solid var(--mhd-navy);
+      color: var(--mhd-navy);
+    }
+
+    .btn-navy:hover {
+      background: var(--mhd-navy);
+      color: #ffffff;
+    }
+
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      border-radius: 2px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.15s ease;
+    }
+
+    .btn-copy:hover {
+      background: var(--mhd-red);
+    }
+
+    /* ABOUT SECTION */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .about-grid, .contact-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    .editorial-p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #334155;
+      margin-bottom: 0.8rem;
+    }
+
+    .capability-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .matrix-card {
+      background: #f8fafc;
+      border: 1px solid var(--mhd-border);
+      border-left: 3px solid var(--mhd-navy);
+      padding: 1.15rem;
+      transition: transform 0.2s ease, border-left-color 0.2s ease;
+    }
+
+    .matrix-card:hover {
+      transform: translateY(-2px);
+      border-left-color: var(--mhd-red);
+    }
+
+    .matrix-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--mhd-navy);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.35rem;
+    }
+
+    .matrix-desc {
+      font-size: 0.78rem;
+      color: var(--mhd-text-muted);
+      line-height: 1.5;
+    }
+
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-info-card {
+      background: #f1f5f9;
+      border: 1px solid var(--mhd-border);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .contact-lbl {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--mhd-text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--mhd-navy);
+    }
+
+    /* Toast Notification for Dynamic Copy & RFQ Actions */
+    #status-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--mhd-navy);
+      border-left: 4px solid var(--mhd-red);
+      color: #ffffff;
+      padding: 1rem 1.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      animation: toastIn 0.3s ease-out;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROMINENT AEROSPACE LOGO HEADER -->
+  <header>
+    <div class="brand-wrap">
+      <a href="#configurator" class="logo-frame" title="Linear Motor Company">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 110">
+          <!-- SLEEK STRAIGHT-EDGE LINEAR MOTOR MARK -->
+          <g id="sleek-linear-stage" transform="translate(15, 22)">
+            <rect x="0" y="44" width="168" height="3" fill="#0B1320"/>
+            <rect x="0" y="32" width="18" height="10" fill="#0B1320"/>
+            <rect x="21" y="32" width="18" height="10" fill="#E2E8F0" stroke="#0B1320" stroke-width="1.2"/>
+            <rect x="42" y="32" width="18" height="10" fill="#0B1320"/>
+            <rect x="63" y="32" width="18" height="10" fill="#E2E8F0" stroke="#0B1320" stroke-width="1.2"/>
+            <rect x="84" y="32" width="18" height="10" fill="#0B1320"/>
+            <rect x="105" y="32" width="18" height="10" fill="#E2E8F0" stroke="#0B1320" stroke-width="1.2"/>
+            <rect x="126" y="32" width="18" height="10" fill="#0B1320"/>
+            <rect x="147" y="32" width="18" height="10" fill="#E2E8F0" stroke="#0B1320" stroke-width="1.2"/>
+
+            <line x1="0" y1="51" x2="168" y2="51" stroke="#D3202A" stroke-width="1"/>
+            <g stroke="#94A3B8" stroke-width="1">
+              <line x1="12" y1="54" x2="12" y2="58"/>
+              <line x1="24" y1="54" x2="24" y2="58"/>
+              <line x1="36" y1="54" x2="36" y2="60"/>
+              <line x1="48" y1="54" x2="48" y2="58"/>
+              <line x1="60" y1="54" x2="60" y2="58"/>
+              <line x1="72" y1="54" x2="72" y2="60"/>
+              <line x1="84" y1="54" x2="84" y2="58"/>
+              <line x1="96" y1="54" x2="96" y2="58"/>
+              <line x1="108" y1="54" x2="108" y2="60"/>
+              <line x1="120" y1="54" x2="120" y2="58"/>
+              <line x1="132" y1="54" x2="132" y2="58"/>
+              <line x1="144" y1="54" x2="144" y2="60"/>
+              <line x1="156" y1="54" x2="156" y2="58"/>
+            </g>
+
+            <rect x="21" y="8" width="102" height="6" fill="#D3202A"/>
+
+            <g transform="translate(21, 16)">
+              <rect x="0" y="0" width="28" height="13" fill="#0B1320"/>
+              <rect x="4" y="3" width="20" height="7" fill="#1E293B"/>
+              
+              <rect x="37" y="0" width="28" height="13" fill="#0B1320"/>
+              <rect x="41" y="3" width="20" height="7" fill="#D3202A"/>
+              
+              <rect x="74" y="0" width="28" height="13" fill="#0B1320"/>
+              <rect x="78" y="3" width="20" height="7" fill="#1E293B"/>
+            </g>
+
+            <rect x="130" y="10" width="22" height="2" fill="#D3202A"/>
+            <rect x="156" y="9" width="4" height="4" fill="#D3202A"/>
+          </g>
+
+          <g transform="translate(225, 30)">
+            <path d="M 0 0 L 10 0 L 10 40 L 32 40 L 32 50 L 0 50 Z" fill="#0B1320"/>
+            <path d="M 42 0 L 53 0 L 63 26 L 73 0 L 84 0 L 84 50 L 74 50 L 74 15 L 67 34 L 59 34 L 52 15 L 52 50 L 42 50 Z" fill="#0B1320"/>
+            <path d="M 94 0 L 126 0 L 126 10 L 105 10 L 105 40 L 126 40 L 126 50 L 94 50 Z" fill="#0B1320"/>
+            <rect x="120" y="23" width="10" height="4" fill="#D3202A"/>
+          </g>
+
+          <rect x="382" y="28" width="2" height="54" fill="#E2E8F0"/>
+          <rect x="382" y="44" width="2" height="22" fill="#D3202A"/>
+
+          <g transform="translate(400, 30)">
+            <text x="0" y="21" font-family="'Montserrat', sans-serif" font-size="19" font-weight="900" letter-spacing="5.5" fill="#0B1320">LINEAR MOTOR CO.</text>
+            <text x="0" y="38" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="3.5" fill="#D3202A">DIRECT-DRIVE MOTION SYSTEMS</text>
+            <text x="0" y="49" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="600" letter-spacing="2" fill="#64748B">AS9100D // ZERO-COGGING AEROSPACE GRADE</text>
+          </g>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="header-right-block">
+      <nav class="nav-tabs">
+        <a href="#configurator" class="nav-btn active" id="nav-link-config">Configurator</a>
+        <a href="#about" class="nav-btn" id="nav-link-about">About LMC</a>
+        <a href="#contact" class="nav-btn" id="nav-link-contact">Contact &amp; RFQ</a>
+      </nav>
+      <div class="header-compliance-panel">
+        <span>MIL-STD-810H Tested</span>
+        <span>AS9100D / ISO 9001</span>
+        <span>CAGE: 38AC2</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-header Hero Banner -->
+  <div class="hero-strip">
+    <div>
+      <h1>Flight &amp; Industrial Direct-Drive Systems</h1>
+      <p>Continuous parametric modeling for ironless and iron-core direct-drive linear servomotors.</p>
+    </div>
+    <div class="defense-tag">Mission-Ready Actuation</div>
+  </div>
+
+  <!-- ================= UNIFIED SINGLE-PAGE STACK ================= -->
+  <div class="main-page-container">
+
+    <!-- SECTION 1: CONFIGURATOR -->
+    <section id="configurator">
+      <div class="section-headline">
+        <h2>01. Parametric Sizing Engine</h2>
+        <div class="section-rule"></div>
+        <span class="section-tag">Interactive Hardware Model</span>
+      </div>
+
+      <div class="config-grid">
+        <!-- Configuration Form -->
+        <div class="mhd-card">
+          <div class="panel-header">
+            <h3>Engineering Architecture</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Step 1: Input Matrix</span>
+          </div>
+
+          <div class="config-field">
+            <label>Magnetic Core Architecture</label>
+            <div class="toggle-group" id="tgl-core">
+              <button class="active" data-val="IL">Ironless (Zero Cogging / Low Inertia)</button>
+              <button data-val="IC">Iron-Core (Max Continuous Thrust)</button>
+            </div>
+          </div>
+
+          <div class="config-field">
+            <label>Coil Stack / Frame Rating</label>
+            <div class="toggle-group" id="tgl-size">
+              <button class="active" data-val="S">Series 3 (Compact 3-Coil)</button>
+              <button data-val="M">Series 6 (Standard 6-Coil)</button>
+              <button data-val="L">Series 9 (High-Thrust 9-Coil)</button>
+            </div>
+          </div>
+
+          <div class="config-field">
+            <label>
+              Linear Stroke Envelope:
+              <span class="val-highlight" id="lbl-stroke">350 mm</span>
+            </label>
+            <input type="range" id="input-stroke" min="100" max="1800" step="50" value="350">
+          </div>
+
+          <div class="config-field">
+            <label>Winding Pattern (Back-EMF Tuning)</label>
+            <div class="toggle-group" id="tgl-winding">
+              <button class="active" data-val="SER">Series (320V / 600V Bus Optimal)</button>
+              <button data-val="PAR">Parallel (80V / 28VDC Aircraft Bus)</button>
+            </div>
+          </div>
+
+          <div class="config-field">
+            <label>Encoder Scale Interface</label>
+            <select class="custom-select" id="select-encoder">
+              <option value="INC-1000">1.0 μm Differential RS-422 Digital Optical</option>
+              <option value="INC-0100" selected>0.1 μm Precision Interpolated Optical</option>
+              <option value="SINCOS">1 Vpp Analog Sin/Cos Differential (High Dynamics)</option>
+              <option value="BISS-C">BiSS-C Point-to-Point Absolute Optical Scale</option>
+            </select>
+          </div>
+
+          <div class="config-field">
+            <label>Thermal &amp; Environmental Dissipation</label>
+            <div class="toggle-group" id="tgl-cooling">
+              <button class="active" data-val="NAT">Convection Passive Shielding</button>
+              <button data-val="AIR">Forced Gas Ring (+25% Fc)</button>
+              <button data-val="LIQ">Chilled Core (+55% Fc)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry & Live Animated SVG Stage -->
+        <div class="mhd-card sticky-card">
+          <div class="panel-header">
+            <h3>Telemetry &amp; Sizing Analysis</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Step 2: Live Validation</span>
+          </div>
+
+          <div class="aero-stage-box">
+            <div class="stage-hud">
+              <div>Velocity: <strong id="hud-vel">2.4 m/s</strong></div>
+              <div>Status: <strong>Active Loop</strong></div>
+              <div>Harmonic: <strong>1.2 Hz</strong></div>
+            </div>
+            <svg id="stage-svg" width="100%" height="150" viewBox="0 0 600 150">
+              <line x1="20" y1="110" x2="580" y2="110" stroke="#1e293b" stroke-width="10" stroke-linecap="square"/>
+              <line x1="20" y1="110" x2="580" y2="110" stroke="#d3202a" stroke-width="2" stroke-dasharray="6 4"/>
+
+              <!-- Magnetic Track (Stationary Stator) -->
+              <g id="track-assembly">
+                <rect id="track-bar" x="35" y="85" width="530" height="18" rx="0" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+                <line x1="100" y1="85" x2="100" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="160" y1="85" x2="160" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="220" y1="85" x2="220" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="280" y1="85" x2="280" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="340" y1="85" x2="340" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="400" y1="85" x2="400" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="460" y1="85" x2="460" y2="103" stroke="#475569" stroke-width="2"/>
+                <line x1="520" y1="85" x2="520" y2="103" stroke="#475569" stroke-width="2"/>
+              </g>
+
+              <!-- Magnetic Flux Pulses in Air Gap -->
+              <path class="flux-arc-animated" d="M 260 82 Q 275 74 290 82" fill="none" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <path class="flux-arc-animated" d="M 310 82 Q 325 74 340 82" fill="none" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+              <!-- Moving Forcer Carriage -->
+              <g id="forcer-carriage">
+                <rect id="forcer-body" x="240" y="38" width="120" height="42" rx="0" fill="#0e1726" stroke="#d3202a" stroke-width="2.5"/>
+                <rect x="250" y="44" width="100" height="6" fill="#1b2434"/>
+                <rect x="250" y="53" width="100" height="3" fill="#334155"/>
+                <rect x="296" y="66" width="8" height="8" fill="#d3202a"/>
+                <path d="M 240 55 C 210 55, 190 95, 130 95" fill="none" stroke="#64748b" stroke-width="3" stroke-linecap="square"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="part-banner">
+            <div>
+              <span class="part-label">AS9100 Configured Part Number</span>
+              <span class="part-code" id="lbl-part-num">LMC-IL-S-0350-SER-0100-NAT</span>
+            </div>
+            <button class="btn-copy" onclick="copyPartCode()">Copy P/N</button>
+          </div>
+
+          <div class="data-grid">
+            <div class="data-cell highlight">
+              <span class="data-metric">Continuous Force ($F_c$)</span>
+              <span class="data-value" id="val-fc">135 <span>N</span></span>
+            </div>
+            <div class="data-cell highlight">
+              <span class="data-metric">Peak Thrust ($F_p$)</span>
+              <span class="data-value" id="val-fp">440 <span>N</span></span>
+            </div>
+            <div class="data-cell">
+              <span class="data-metric">Force Constant ($K_f$)</span>
+              <span class="data-value" id="val-kf">51.2 <span>N/A_rms</span></span>
+            </div>
+            <div class="data-cell">
+              <span class="data-metric">Back-EMF Constant ($K_e$)</span>
+              <span class="data-value" id="val-ke">41.8 <span>V_pk/(m/s)</span></span>
+            </div>
+            <div class="data-cell">
+              <span class="data-metric">Attraction Force</span>
+              <span class="data-value" id="val-attr">0 <span>N (Zero-Cog)</span></span>
+            </div>
+            <div class="data-cell">
+              <span class="data-metric">Moving Forcer Mass</span>
+              <span class="data-value" id="val-mass">1.30 <span>kg</span></span>
+            </div>
+          </div>
+
+          <div class="commercial-box">
+            <div>
+              <div class="price-num" id="lbl-price">$2,140.00 USD</div>
+              <div class="lead-status">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
+                Standard AOG / Priority Lead: 2–3 Weeks
+              </div>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--mhd-text-muted); text-align: right; line-height: 1.4;">
+              ITAR / EAR99 Compliant<br>Includes Inspection Certificate
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button class="btn btn-navy" onclick="triggerDatasheet()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Export Tech Spec
+            </button>
+            <button class="btn btn-red" onclick="scrollToQuote()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              Generate RFQ
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT LMC -->
+    <section id="about">
+      <div class="section-headline">
+        <h2>02. Company &amp; Aerospace Infrastructure</h2>
+        <div class="section-rule"></div>
+        <span class="section-tag">AS9100D Certified</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="mhd-card">
+          <div class="panel-header">
+            <h3>Engineering Heritage</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Direct-Drive Focus</span>
+          </div>
+
+          <p class="editorial-p">
+            <strong>Linear Motor Company (LMC Precision)</strong> designs, qualifies, and manufactures high-performance electromagnetic direct-drive stages, ironless slotless coil assemblies, and rare-earth magnetic tracks for critical defense, aerospace, semiconductor, and medical imaging applications.
+          </p>
+          <p class="editorial-p">
+            Built around the operational discipline of aerospace flight-hardware manufacturing, LMC eliminates mechanical transmission errors—such as backlash, ball-screw whip, and cyclic pitch hunting—delivering sub-nanometer positional repeatability with high dynamic bandwidth ($&gt;20\,\text{G}$ peak acceleration).
+          </p>
+
+          <div class="capability-matrix">
+            <div class="matrix-card">
+              <div class="matrix-title">Class 1,000 Cleanroom Winding</div>
+              <div class="matrix-desc">Proprietary potting and coil-encapsulation techniques eliminate outgassing for high-vacuum ($10^{-7}\,\text{Torr}$) and optical laser scanning payloads.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-title">AS9100D Quality Assurance</div>
+              <div class="matrix-desc">Traceability from melt to motion. Full serialized raw-material certifications, magnetic flux profile mapping, and Form 8130-3 airworthiness documentation.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-title">Advanced Halbach Track Arrays</div>
+              <div class="matrix-desc">Precision-ground magnetic tracks utilizing ultra-high-grade Neodymium NdFeB (N52H, $120^\circ\text{C}$ rated) magnets with zero cogging or parasitic torque ripple.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-title">Drive &amp; Controller Interoperability</div>
+              <div class="matrix-desc">Pre-tuned for standard multi-axis controllers and digital servo drives (including Aerotech A3200 / Ndrive, Elmo, Beckhoff, and Delta Tau).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Quality & Registration -->
+        <div class="mhd-card">
+          <div class="panel-header">
+            <h3>Quality Standards &amp; Codes</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Compliance Matrix</span>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-row">
+              <span class="contact-lbl">Quality Management</span>
+              <span class="contact-val">AS9100 Rev D / ISO 9001:2015</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">Defense Registration</span>
+              <span class="contact-val">CAGE Code: 38AC2 // JCP Certified</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">Export Compliance</span>
+              <span class="contact-val">ITAR / EAR99 Regulated Manufacturing</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">Environmental Testing</span>
+              <span class="contact-val">MIL-STD-810H Shock &amp; Vibration Tested</span>
+            </div>
+          </div>
+
+          <div style="background: #eef2f6; border-left: 3px solid var(--mhd-navy); padding: 0.9rem; font-size: 0.75rem; color: #475569; line-height: 1.5; margin-top: 0.5rem;">
+            Every linear forcer and magnet track ships with serialized interferometric calibration curves, coil inductance/resistance logs, and isolation hi-pot test reports.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CONTACT & TECHNICAL RFQ -->
+    <section id="contact">
+      <div class="section-headline">
+        <h2>03. Engineering Support &amp; Technical RFQ</h2>
+        <div class="section-rule"></div>
+        <span class="section-tag">Direct Applications Gateway</span>
+      </div>
+
+      <div class="contact-grid">
+        <div class="mhd-card">
+          <div class="panel-header">
+            <h3>Transmit Technical RFQ</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Direct To Engineering</span>
+          </div>
+
+          <form id="contact-form" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="config-field">
+                <label>Full Name / Title</label>
+                <input type="text" class="custom-input" placeholder="e.g. Dr. Alex Morgan, Lead Systems Architect" required>
+              </div>
+              <div class="config-field">
+                <label>Corporate / Organization Email</label>
+                <input type="email" class="custom-input" placeholder="e.g. a.morgan@aerospace-oem.com" required>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="config-field">
+                <label>Organization / OEM</label>
+                <input type="text" class="custom-input" placeholder="e.g. Pratt &amp; Whitney / General Dynamics" required>
+              </div>
+              <div class="config-field">
+                <label>Program Classification</label>
+                <select class="custom-select">
+                  <option>Aerospace / Defense (ITAR/Controlled)</option>
+                  <option>Industrial Automation &amp; Robotics</option>
+                  <option>Semiconductor / Optical Metrology</option>
+                  <option>Medical Device OEM</option>
+                  <option>Academic / Government Research</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="config-field">
+              <label>Configured Assembly Part Number</label>
+              <input type="text" id="contact-part-input" class="custom-input" style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">
+            </div>
+
+            <div class="config-field">
+              <label>Payload, Duty Cycle, &amp; Thermal Requirements</label>
+              <textarea class="custom-textarea" placeholder="Detail your mass payload, continuous duty cycle, ambient bus voltages, and vacuum requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-red" style="padding: 1rem; width: 100%;">
+              Transmit Engineering RFQ
+            </button>
+          </form>
+        </div>
+
+        <!-- Plant Information & ITAR Warning -->
+        <div class="mhd-card">
+          <div class="panel-header">
+            <h3>Headquarters &amp; Actuation Works</h3>
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--mhd-text-muted); text-transform: uppercase;">Direct Line</span>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-row">
+              <span class="contact-lbl">Manufacturing Facility</span>
+              <span class="contact-val">LMC Motion Systems Inc.<br>Advanced Actuation Works<br>Aerospace Tech Corridor</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">Applications Engineering</span>
+              <span class="contact-val">engineering@linearmotorcompany.com</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">Defense Direct Line</span>
+              <span class="contact-val">+1 (800) 562-MOTO [6686]</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-lbl">ITAR Officer / Export Verification</span>
+              <span class="contact-val">compliance@linearmotorcompany.com</span>
+            </div>
+          </div>
+
+          <div style="background: #eef2f6; border-left: 3px solid var(--mhd-red); padding: 0.9rem; font-size: 0.72rem; color: #475569; line-height: 1.5; margin-top: 0.5rem;">
+            <strong>ITAR Notice:</strong> Do not submit unencrypted Technical Data Packages (TDP) via web forms. Secure encrypted SFTP credentials will be provided upon NDA verification.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast Notification Overlay -->
+  <div id="status-toast">
+    <svg width="18" height="18" fill="none" stroke="#34d399" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-text">Part Number copied to clipboard.</span>
+  </div>
+
+  <script>
+    // Toast Notification helper
+    function showToast(msg) {
+      const toast = document.getElementById('status-toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => { toast.style.display = 'none'; }, 3200);
+    }
+
+    // Scroll spy for navigation buttons
+    const sections = document.querySelectorAll('section');
+    const navLinks = {
+      'configurator': document.getElementById('nav-link-config'),
+      'about': document.getElementById('nav-link-about'),
+      'contact': document.getElementById('nav-link-contact')
+    };
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 150;
+        if (window.pageYOffset >= top) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      Object.keys(navLinks).forEach(key => {
+        navLinks[key].classList.remove('active');
+        if (key === current) {
+          navLinks[key].classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll from configurator directly into RFQ
+    function scrollToQuote() {
+      const part = document.getElementById('lbl-part-num').innerText;
+      document.getElementById('contact-part-input').value = part;
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Transferred P/N ${part} to Technical RFQ form.`);
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      showToast("Engineering inquiry transmitted. A senior applications engineer will review your project parameters within 24h.");
+      e.target.reset();
+      document.getElementById('contact-part-input').value = document.getElementById('lbl-part-num').innerText;
+    }
+
+    // Configurator state & calculations
+    const state = {
+      core: 'IL',
+      size: 'S',
+      stroke: 350,
+      winding: 'SER',
+      encoder: 'INC-0100',
+      cooling: 'NAT'
+    };
+
+    function bindControl(groupId, key) {
+      const container = document.getElementById(groupId);
+      container.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state[key] = btn.getAttribute('data-val');
+          updateCalculations();
+        });
+      });
+    }
+
+    bindControl('tgl-core', 'core');
+    bindControl('tgl-size', 'size');
+    bindControl('tgl-winding', 'winding');
+    bindControl('tgl-cooling', 'cooling');
+
+    const strokeInput = document.getElementById('input-stroke');
+    const strokeLbl = document.getElementById('lbl-stroke');
+
+    strokeInput.addEventListener('input', (e) => {
+      state.stroke = parseInt(e.target.value);
+      strokeLbl.innerText = `${state.stroke} mm`;
+      updateCalculations();
+    });
+
+    document.getElementById('select-encoder').addEventListener('change', (e) => {
+      state.encoder = e.target.value;
+      updateCalculations();
+    });
+
+    let currentAnim = null;
+
+    function updateCalculations() {
+      let sizeMultiplier = 1.0;
+      let forcerWidth = 85;
+      let baseMass = 0.85;
+      let basePrice = 1150;
+
+      if (state.size === 'M') {
+        sizeMultiplier = 2.1;
+        forcerWidth = 140;
+        baseMass = 1.7;
+        basePrice = 1680;
+      } else if (state.size === 'L') {
+        sizeMultiplier = 3.3;
+        forcerWidth = 200;
+        baseMass = 2.8;
+        basePrice = 2290;
+      }
+
+      const isIronCore = state.core === 'IC';
+      const coreFcMult = isIronCore ? 2.4 : 1.0;
+      const coreFpMult = isIronCore ? 2.6 : 1.0;
+      const attraction = isIronCore ? `${Math.round(520 * sizeMultiplier)} N` : '0 N (Zero-Cog)';
+
+      let coolingMult = 1.0;
+      let coolingAddPrice = 0;
+      if (state.cooling === 'AIR') {
+        coolingMult = 1.25;
+        coolingAddPrice = 240;
+      } else if (state.cooling === 'LIQ') {
+        coolingMult = 1.55;
+        coolingAddPrice = 490;
+      }
+
+      const fc = Math.round(58 * sizeMultiplier * coreFcMult * coolingMult);
+      const fp = Math.round(185 * sizeMultiplier * coreFpMult);
+
+      const isSeries = state.winding === 'SER';
+      const kf = (isSeries ? (34.2 * sizeMultiplier) : (17.1 * sizeMultiplier)).toFixed(1);
+      const ke = (isSeries ? (27.9 * sizeMultiplier) : (13.95 * sizeMultiplier)).toFixed(1);
+
+      const trackCost = state.stroke * 1.85;
+      let encoderCost = 300;
+      if (state.encoder === 'SINCOS') encoderCost = 480;
+      if (state.encoder === 'BISS-C') encoderCost = 720;
+
+      const totalPrice = Math.round(basePrice + trackCost + encoderCost + coolingAddPrice);
+
+      document.getElementById('val-fc').innerHTML = `${fc} <span>N</span>`;
+      document.getElementById('val-fp').innerHTML = `${fp} <span>N</span>`;
+      document.getElementById('val-kf').innerHTML = `${kf} <span>N/A_rms</span>`;
+      document.getElementById('val-ke').innerHTML = `${ke} <span>V_pk/(m/s)</span>`;
+      document.getElementById('val-attr').innerHTML = `${attraction}`;
+      document.getElementById('val-mass').innerHTML = `${(baseMass + (state.cooling === 'LIQ' ? 0.4 : 0)).toFixed(2)} <span>kg</span>`;
+      document.getElementById('lbl-price').innerText = `$${totalPrice.toLocaleString('en-US')}.00 USD`;
+
+      const partCode = `LMC-${state.core}-${state.size}-${String(state.stroke).padStart(4, '0')}-${state.winding}-${state.encoder}-${state.cooling}`;
+      document.getElementById('lbl-part-num').innerText = partCode;
+      document.getElementById('contact-part-input').value = partCode;
+
+      // Update Live Velocity Readout based on stroke dynamics
+      const simulatedVelocity = (1.4 + (state.stroke / 1800) * 2.8).toFixed(1);
+      document.getElementById('hud-vel').innerText = `${simulatedVelocity} m/s`;
+
+      animateForcer(forcerWidth);
+    }
+
+    function animateForcer(width) {
+      const forcer = document.getElementById('forcer-body');
+      forcer.setAttribute('width', width);
+
+      const maxTravel = Math.min(210, (state.stroke / 1800) * 210);
+      const carriage = document.getElementById('forcer-carriage');
+      
+      if (currentAnim) {
+        currentAnim.cancel();
+      }
+
+      currentAnim = carriage.animate([
+        { transform: `translateX(-${maxTravel}px)` },
+        { transform: `translateX(${maxTravel}px)` },
+        { transform: `translateX(-${maxTravel}px)` }
+      ], {
+        duration: 3400,
+        iterations: Infinity,
+        easing: 'cubic-bezier(0.45, 0.05, 0.55, 0.95)'
+      });
+    }
+
+    function copyPartCode() {
+      const code = document.getElementById('lbl-part-num').innerText;
+      navigator.clipboard.writeText(code);
+      showToast(`Copied Part Number: ${code}`);
+    }
+
+    function triggerDatasheet() {
+      const code = document.getElementById('lbl-part-num').innerText;
+      showToast(`Generating technical engineering datasheet for: ${code}`);
+    }
+
+    // Initialize state
+    updateCalculations();
+  </script>
+</body>
+</html>
